@@ -1,0 +1,30 @@
+
+ <h1>Books</h1>
+ <table class="table">
+<tr class="title">
+ 	<th><h3>Title</h3></th>
+ 	<th><h3>Body</h3></th>
+</tr>
+ <% @posts.each do |post| %>
+    <tr class="body">
+    	<td><%= post.title %></td>
+    	<td><%= post.body %></td>
+    	<td><%= link_to "Show", post_path(post.id)%></td>
+    	<td><%= link_to "Edit", edit_post_path(post.id)%></td>
+    	<td><%= link_to "Destroy", destroy_post_path(post.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+    </tr>
+ <% end %>
+</table>
+
+ <h1>New book</h1>
+<%= form_for(@post) do |f| %>
+
+    <h4>Title</h4>
+    <%= f.text_field :title %>
+
+    <h4>Body</h4>
+    <%= f.text_area :body %>
+
+    <br><%= f.submit 'Create Book' %>
+
+<% end %>
